@@ -12,9 +12,6 @@
 
 @interface ViewController ()
 
-
-@property (nonatomic ,strong)NSMutableArray *addressArray;//获取到的通讯录
-
 @end
 
 @implementation ViewController
