@@ -75,6 +75,8 @@ typedef enum : NSUInteger {
 
 /**
  * 获取通讯录权限
+ * @param auth YES:同意访问通讯录 
+ *             NO:不同意访问通讯录
  */
 - (void)addressBookAuthority:(void (^)(BOOL auth))block;
 

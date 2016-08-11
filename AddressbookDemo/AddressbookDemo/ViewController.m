@@ -22,22 +22,31 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    // MARK: 该方法是获取授权
     [[AddressBookManager sharedInstance] addressBookAuthority:^(BOOL auth) {
     
+        // MARK: 授权之后
         if (auth) {
-           NSArray *addressArray =  [[AddressBookManager sharedInstance] getAddressBookList];
+            
+            //获取通讯录列表
+            NSArray *addressArray =  [[AddressBookManager sharedInstance] getAddressBookList];
             
             NSLog(@"======");
             NSLog(@"%@",addressArray);
-//            AddressBookModel *model = [[AddressBookModel alloc] init];
-//            model.surname = @"Zhao";
-//            model.name = @"XianSheng";
-//            model.phone = @[@"1ssssss"];
-//            [[AddressBookManager sharedInstance] deleteAddressBook:model WithType:0];
-//            [[AddressBookManager sharedInstance] replaceAddressBook:model];
-//            [[AddressBookManager sharedInstance] addAddressBook:model];
-//            addressArray =  [[AddressBookManager sharedInstance] getAddressBookList];
-//            NSLog(@"%@",addressArray);
+            AddressBookModel *model = [[AddressBookModel alloc] init];
+            model.surname = @"Zhao";
+            model.name = @"XianSheng";
+            model.phone = @[@"1ssssss"];
+            
+            // MARK: 删除记录
+            [[AddressBookManager sharedInstance] deleteAddressBook:model WithType:0];
+            // MARK: 修改记录
+            [[AddressBookManager sharedInstance] replaceAddressBook:model];
+            // MARK: 添加记录
+            [[AddressBookManager sharedInstance] addAddressBook:model];
+            addressArray =  [[AddressBookManager sharedInstance] getAddressBookList];
+            NSLog(@"%@",addressArray);
             
         }
     }];
